@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Индивидуальная рефлексия — Педсовет 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f0f0ee; font-family: 'Segoe UI', Arial, sans-serif; min-height: 100vh; padding: 24px 16px 48px; }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  .hero { background: #1a1a2e; border-radius: 20px; padding: 28px 28px 24px; margin-bottom: 24px; color: #fff; }
+  .hero-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+  .hero h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .hero p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+  .progress-wrap { margin-bottom: 24px; }
+  .progress-bar { height: 4px; background: #e0e0dc; border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #3C3489; border-radius: 4px; transition: width .4s; }
+  .progress-label { font-size: 12px; color: #aaa; margin-top: 6px; text-align: right; }
+  .card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .q-num { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .q-text { font-size: 16px; font-weight: 600; color: #1a1a2e; margin-bottom: 16px; line-height: 1.45; }
+  .q-hint { font-size: 13px; color: #888; margin-bottom: 14px; margin-top: -10px; }
+  input[type=text], textarea, select { width: 100%; font-size: 15px; padding: 12px 14px; border: 2px solid #e8e8e4; border-radius: 10px; outline: none; transition: border .2s; color: #1a1a2e; font-family: inherit; background: #fafaf8; }
+  input[type=text]:focus, textarea:focus, select:focus { border-color: #3C3489; background: #fff; }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+  .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 8px; }
+  .radio-opt { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 2px solid #e8e8e4; border-radius: 10px; cursor: pointer; transition: border .15s, background .15s; font-size: 15px; color: #1a1a2e; user-select: none; }
+  .radio-opt:hover { border-color: #c0bce8; background: #f5f4fd; }
+  .radio-opt.selected { border-color: #3C3489; background: #eeedfe; }
+  .radio-opt input { display: none; }
+  .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #ccc; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border .15s; }
+  .radio-opt.selected .radio-dot { border-color: #3C3489; }
+  .radio-dot-inner { width: 8px; height: 8px; border-radius: 50%; background: #3C3489; display: none; }
+  .radio-opt.selected .radio-dot-inner { display: block; }
+  .scale-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .scale-row { display: flex; gap: 6px; }
+  .scale-btn { flex: 1; aspect-ratio: 1; border: 2px solid #e8e8e4; border-radius: 8px; background: #fafaf8; font-size: 15px; font-weight: 600; color: #888; cursor: pointer; transition: all .15s; display: flex; align-items: center; justify-content: center; }
+  .scale-btn:hover { border-color: #3C3489; color: #3C3489; }
+  .scale-btn.selected { border-color: #3C3489; background: #3C3489; color: #fff; }
+  .scale-labels { display: flex; justify-content: space-between; font-size: 12px; color: #aaa; padding: 0 2px; }
+  .card.highlight { border: 2px solid #3C3489; }
+  .cloud-badge { display: inline-flex; align-items: center; gap: 6px; background: #eeedfe; color: #3C3489; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
+  button { margin-top: 14px; width: 100%; padding: 15px; background: #3C3489; color: #fff; font-size: 17px; font-weight: 600; border: none; border-radius: 12px; cursor: pointer; transition: background .2s, transform .1s; font-family: inherit; }
+  button:active { transform: scale(.97); }
+  button:disabled { background: #b0b0c0; cursor: not-allowed; }
+  .msg { margin-top: 14px; font-size: 14px; text-align: center; min-height: 20px; font-weight: 500; }
+  .msg.ok { color: #085041; }
+  .msg.err { color: #791F1F; }
+  .success { text-align: center; padding: 48px 24px; display: none; }
+  .success-icon { font-size: 56px; margin-bottom: 16px; }
+  .success h2 { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+  .success p { font-size: 15px; color: #777; line-height: 1.5; }
+  .err-msg { font-size: 13px; color: #a32d2d; margin-top: 6px; display: none; }
+  .card.invalid input, .card.invalid textarea { border-color: #e07070; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-label">Педагогический совет · 25.06.2026</div>
+    <h1>Индивидуальная рефлексия</h1>
+    <p>13 вопросов · около 12–15 минут</p>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-label" id="progress-label">0 из 13</div>
+  </div>
+
+  <div id="form-body">
+
+    <!-- Q1: ФИО -->
+    <div class="card" id="card-1">
+      <div class="q-num">Вопрос 1 из 13</div>
+      <div class="q-text">Ваши ФИО</div>
+      <input type="text" id="q1" placeholder="Иванова Мария Петровна" maxlength="100"/>
+      <div class="err-msg" id="err-1">Пожалуйста, введите ФИО</div>
+    </div>
+
+    <!-- Q2: Направление -->
+    <div class="card" id="card-2">
+      <div class="q-num">Вопрос 2 из 13</div>
+      <div class="q-text">Какое направление(я), блок(и) задач для Вас было самым приоритетным в этом году?</div>
+      <div class="radio-group" id="q2">
+        <label class="radio-opt" onclick="selectRadio('q2',this,'Содержание образования')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Содержание образования</label>
+        <label class="radio-opt" onclick="selectRadio('q2',this,'Качество образования')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Качество образования</label>
+        <label class="radio-opt" onclick="selectRadio('q2',this,'Воспитание')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Воспитание</label>
+        <label class="radio-opt" onclick="selectRadio('q2',this,'Цифровая среда и учёт')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Цифровая среда и учёт</label>
+        <label class="radio-opt" onclick="selectRadio('q2',this,'Свой вариант')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Свой вариант</label>
+        <div id="q2-custom-wrap" style="margin-top:4px;display:none;padding:0 4px;">
+          <input type="text" id="q2-custom" placeholder="Введите своё направление..." maxlength="100"/>
+        </div>
+      </div>
+      <div class="err-msg" id="err-2">Пожалуйста, выберите направление</div>
+    </div>
+
+    <!-- Q3: Оценка 1-10 -->
+    <div class="card" id="card-3">
+      <div class="q-num">Вопрос 3 из 13</div>
+      <div class="q-text">Оцените успешность данного направления/блока в колледже по шкале 1–10</div>
+      <div class="scale-wrap">
+        <div class="scale-row" id="q3">
+          <div class="scale-btn" onclick="selectScale('q3',this,1)">1</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,2)">2</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,3)">3</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,4)">4</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,5)">5</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,6)">6</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,7)">7</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,8)">8</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,9)">9</div>
+          <div class="scale-btn" onclick="selectScale('q3',this,10)">10</div>
+        </div>
+        <div class="scale-labels"><span>Низкая</span><span>Высокая</span></div>
+      </div>
+      <div class="err-msg" id="err-3">Пожалуйста, выберите оценку</div>
+    </div>
+
+    <!-- Q4: Конкретное действие -->
+    <div class="card" id="card-4">
+      <div class="q-num">Вопрос 4 из 13</div>
+      <div class="q-text">Ваше конкретное действие, которое повлияло на результат данного направления</div>
+      <textarea id="q4" placeholder="Опишите одно–два конкретных действия..."></textarea>
+      <div class="err-msg" id="err-4">Пожалуйста, заполните поле</div>
+    </div>
+
+    <!-- Q5: Показатели -->
+    <div class="card" id="card-5">
+      <div class="q-num">Вопрос 5 из 13</div>
+      <div class="q-text">Какие показатели в представленных материалах Вы сочли важными для доработки, по какой причине?</div>
+      <textarea id="q5" placeholder="Укажите показатели и объясните причину..."></textarea>
+      <div class="err-msg" id="err-5">Пожалуйста, заполните поле</div>
+    </div>
+
+    <!-- Q6: Участие в решениях (бывший Q10) -->
+    <div class="card" id="card-6">
+      <div class="q-num">Вопрос 6 из 13</div>
+      <div class="q-text">Готовы ли Вы принять участие в реализации одного из решений, предложенных сегодня?</div>
+      <div class="radio-group" id="q6">
+        <label class="radio-opt" onclick="selectRadio('q6',this,'Да, готов(а)')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Да, готов(а)</label>
+        <label class="radio-opt" onclick="selectRadio('q6',this,'Нет, пока не готов(а)')"><input type="radio"/><span class="radio-dot"><span class="radio-dot-inner"></span></span>Нет, пока не готов(а)</label>
+      </div>
+      <div id="q6-which-wrap" style="margin-top:10px;display:none;">
+        <input type="text" id="q6-which" placeholder="Какого именно решения?" maxlength="200"/>
+      </div>
+      <div class="err-msg" id="err-6">Пожалуйста, выберите вариант</div>
+    </div>
+
+    <!-- Q7: Новые навыки (бывший Q6) -->
+    <div class="card" id="card-7">
+      <div class="q-num">Вопрос 7 из 13</div>
+      <div class="q-text">Какие новые навыки или компетенции Вы освоили за этот учебный год?</div>
+      <textarea id="q7" placeholder="Перечислите навыки или компетенции..."></textarea>
+      <div class="err-msg" id="err-7">Пожалуйста, заполните поле</div>
+    </div>
+
+    <!-- Q8: Зона роста (бывший Q7) -->
+    <div class="card" id="card-8">
+      <div class="q-num">Вопрос 8 из 13</div>
+      <div class="q-text">Какую профессиональную зону роста Вы видите у себя и каким способом планируете её развить?</div>
+      <div class="q-hint">Варианты: курсы, наставничество, самообразование, стажировка и т.п.</div>
+      <textarea id="q8" placeholder="Зона роста и способ развития..."></textarea>
+      <div class="err-msg" id="err-8">Пожалуйста, заполните поле</div>
+    </div>
+
+    <!-- Q9: Конкретные действия (бывший Q8, новый текст) -->
+    <div class="card" id="card-9">
+      <div class="q-num">Вопрос 9 из 13</div>
+      <div class="q-text">Какие 1–2 конкретных действия Вы планируете предпринять в следующем учебном году для развития выбранного профессионального направления?</div>
+      <textarea id="q9" placeholder="Опишите конкретные шаги..."></textarea>
+      <div class="err-msg" id="err-9">Пожалуйста, заполните поле</div>
+    </div>
+
+    <!-- Q10: Нереализованные возможности (бывший Q9) -->
+    <div class="card" id="card-10">
+      <div class="q-num">Вопрос 10 из 13</div>
+      <div class="q-text">Какие свои профессиональные возможности Вы пока не в полной мере реализуете в работе?</div>
+      <div class="q-hint">Например: хотелось бы вести проект, но не хватает времени; есть навык наставничества, который не применяется.</div>
+      <textarea id="q10" placeholder="Опишите нереализованные возможности..."></textarea>
+      <div class="err-msg" id="err-10">Пожалуйста, заполните поле</div>
+    </div>
+
+    <!-- Q11: Слово сегодня (настроение) -->
+    <div class="card highlight" id="card-11">
+      <div class="q-num">Вопрос 11 из 13</div>
+      <div class="cloud-badge">☁️ Попадёт в облако на экране</div>
+      <div class="q-text">Одно слово, описывающее Ваше настроение сегодня</div>
+      <input type="text" id="q11" placeholder="Например: Вдохновение" maxlength="40"/>
+      <div class="err-msg" id="err-11">Пожалуйста, введите одно слово</div>
+    </div>
+
+    <!-- Q12: Слово на новый год -->
+    <div class="card" id="card-12">
+      <div class="q-num">Вопрос 12 из 13</div>
+      <div class="q-text">Какое слово описывает состояние, в котором Вы хотите вступить в новый учебный год?</div>
+      <input type="text" id="q12" placeholder="Например: Энергия" maxlength="40"/>
+      <div class="err-msg" id="err-12">Пожалуйста, введите слово</div>
+    </div>
+
+    <!-- Q13: Оценка формата педсовета -->
+    <div class="card" id="card-13">
+      <div class="q-num">Вопрос 13 из 13</div>
+      <div class="q-text">Насколько, по Вашему мнению, эффективен новый формат педсовета?</div>
+      <div class="scale-wrap">
+        <div class="scale-row" id="q13">
+          <div class="scale-btn" onclick="selectScale('q13',this,1)">1</div>
+          <div class="scale-btn" onclick="selectScale('q13',this,2)">2</div>
+          <div class="scale-btn" onclick="selectScale('q13',this,3)">3</div>
+          <div class="scale-btn" onclick="selectScale('q13',this,4)">4</div>
+          <div class="scale-btn" onclick="selectScale('q13',this,5)">5</div>
+        </div>
+        <div class="scale-labels"><span>Неэффективен</span><span>Очень эффективен</span></div>
+      </div>
+      <div class="err-msg" id="err-13">Пожалуйста, выберите оценку</div>
+    </div>
+
+    <button id="submit-btn" onclick="submitForm()">Отправить ответы</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="success" id="success-screen">
+    <div class="success-icon">🎉</div>
+    <h2>Спасибо за ответы!</h2>
+    <p>Ваше слово уже появилось в облаке на экране.<br>Хорошего завершения учебного года!</p>
+  </div>
+</div>
+
+<script type="module">
+function a0_0x9fb2(){const _0x3b4f9e=['0zVtM9oC0jlqHq','W7z9WPaHzG','bJqWWPzf','0QdsPnoz0RNtUq','dSo6AmkJnW','W5ZcOHC','WPxcJ8kdrey','WP9iE8kNWPm','DSoAsmk+vq','xMOPWQLsW4VdJga','W4CeWQRcSbq','iCoKcerK','0lBsLTcX0AdsVG','WO/cP8ouWRRdVwBcMq83z3q','W7xcHtb+W75ggG','WQ3cGmoKztC','W6O8tdu','WRTbW74Adq','bG3cT0/dJs3dRsH7lSkXWP8','EWqFxG','zH8iv8ki','WR5sW64','WQ5KWRi','WPxdTCkvW51bx3C','tmkRnCo0BG','W4CfWQhcQHq','wSoBkIpdPG','0OprSTc50B/qGa','WRNdO8kzdHO','y8oJW5xcGJq','zW4bv8km','WOLaWOnSWPu','WOfgW7fADxmwW6hcLHJcPZG','bCkZDCkgzq','W7KlWQOTW6G','W6tcJ8ojW5a','W6Czka','0j/sMTkA04FqHW','bSkZz8kIFa','t8ogWRxcNfW','W4hdUCkGW4bx','WOiLWQlcJt0jW4O','nSoZe2PI','jSkHW6/dK10','W5FcOauzW6m','WQ3dRCkraG','C8ousmkFgq','WQCMW7hdQg8','WP3tKnoC0RdtUq','WRuPW4JcGCoN','W5lcJSoUWPlcNSkMW40','WQHnW7Cbha','WOtcISokWQtcKa','WPJdUCodW5CF','WPjvWPu1','Cmowx8k0da','W7GyWQVcSG','atu9WP8','n8k2WOxdMNxdRfXRW4NcTIZcSeS','wCoSWRxcJvO','W5JdVmkeW6dcVW','WOHfW74d','W6i7W6NdJ2nOW5pdLq','WOLqbSkkW7S','WRLtW6DO','xmkPWQGcxW','bmk7DSkjza','W41qFq','W4pcMmo0W7JdSq','WRTEW6Lzsa','W6WLW7S','W5ryASotWOm','hSoQWRbmva','vWTep2W','W5W3BdW','eSkLpSkuCW','W5bcESoAWPK','W4m2W4dcQmoe','gSo/W6zBEa','W47dTmkaW7ZcQa','hSohW6ZcSG','WO3dVSoh','WP0OW4tcVSkD','0l3sLDgx0kxcTG','qmoiWQRcU3W','0BVrQN/dMTcd','WOOSW5JcOCkf','DfPdcmoB','WQiSW5JcPq','kSovWR0','WPCgW4S2WOO','CmoVW5ZcMsu','tCobDcddQq','d8oQW65dqG','WQJdP8kbpHm','WQuXW5dcNSoX','W5BcPbmhW7S','u1RdVrJcJa','W5tdQCk3W7fu','0RxrMTk+060','W4XfyIix','hK1sWQJcUW','W6vuqCoA','0RJtNToR04xqIW','ACkQWPreW5C','CSoihG','W4Oq05trS9ox','0j3sKnc60AxsUa','lsmAWP4','FauhwSkb','fmoCyIJdSq','cCo/W6PQvW','WQruWOm','WQDZW6GbgW','W4XsFYbw','WPxcHSonWQVcLW','WQRdSCkbsLe','WPyAjgqt','imoXWPtcQJddLSkL','i8ocWQVdUmkj','e10Bys1iWQ8KxXmhFW','WQLjW7LotG','0i7qHDkX0l3tGq','wSonAZxdPG','drmqWQJcPq','W6XFW70','zW8cfSkE','WRm6W6u','WQdcGXjqW4W','WRRcMXXbW4i','W5rczCoB','WPOQW7JcPCkB','WQPwW7H+WQVdNeFcTCkit8k9','zXDGna','W5fEyYO','geHoWQRcSG','WRdcM8oQ','WRbUWRal','WPTidCofW7GQW4ZdRq','WQ7cIHK','tSo/Aq','CbKYwSkE','smoyWPNcNKq','WOFcImkehqi','WPlcK8okWQtcGq','Fmovtmk7fa','0zZrPngH04FqJG','W4XujCoFW5S','Eaift8ki','WOP1WPJcT8oB','W7q9W6rCcW','WQrjWQ8L','WQqGW4tcNCoI','WRzKWPKksq','WRXVWP7dIty','04psPTo005hrHW','0jhrLTgR0Au6','yCkMvHiI','WR7cTSk/la','WQBcIG4','lCkxl07dJaiCWQu','WQ8DWQG','iCkjcCoSawNcQ8oXBSke','cd8NWR9C','0khsHTgH0QdqTW','sXKjW7NdPJW9cwy8WOy','WOqEiSoLW4C','WRzMW7BdSNu','CmoVW5W','vL7dUJJcKW','W7mtWPdcQq','W4hcK8o0W7hdTa','0kltOTcQ0kNtLa','xmoFWR/cJu4','W4bCWQRcSHu','ta1bFw0','jCofbej6','WPeWW6RcTSoY','WRHdW6KXga','sSoezIpdTG','u1FdOr7cLa','W4RcPmkcWQqhW7VdLmodgui','WQ7cLCoVEJC','W5eaWQaa','W7KDj8oYW4e','xMnRW40iWQVcPv4WdSoNtgy','WOfvWOG1','0ktsGng10PJqTa','W6tdPCkDW6e','wSonCXNdSq','CSkHWPHvW7O','W77qLnkSveG','uf/dQG','WRDIW6ddRg0','W5hcMCoYW5ddQW','W4auWRW','W4rmESoAW4C','vCoIWPdcGW','WPOSW5RcHG','W5mCWRaBlG','W4FcRCoMWRyn','WQ3cMCoYzIy','WORcP8oyWRZdUt3cMXCou3S/','n8kVirjD','0OxtNSopWQ7tLa','W7vHWPfjyq','WP3dO8oFW6y','WOOSW5JcSmkl','WOtcGCooWR/cIa','WOHRDZdcPG','WRZdTSkmfXO','DWOcxSkm','WOnDWOmVWPy','WPNdQ8kqda','WPvfWOuIWOC','w8kIWPdcMcu','0O/sQTkU0RVtTW','hCoVW6XzxG','W5BcUIrzoW','W6yromoJ','WRhcJa9CW4S','DCo6W4NcGcu','vXi4xW','yCoRW4tcQsW','C8oYWQRcLWu','W5VdVSktW6pdPG','W7LcWOma','WQPjW6Ga','W5xcUef7','W4RdImozdH4','hCo/ffC','0PNtInk007hsPG','dDoR06htGDcf','WPddImkUW453wgy','CGDhnhu','W7r7WPeuAW','WOvjW63dSerDWQXgf8kuWP8LW6S','WRbzW71iWOS','Cmojsmo3','WRiGW5/cM8o3','nCovWRJcP8oB','WOdcLJrx','WQi6WQa','wSofWQJcM0q','WPtdTSkmcXO','WQuWW5VcHmoX','WQZcKCo4zW','nCoeWQdcUCoD','s8kComo1za','cdm1WOm','zmkkcW','W4JcJvPGEG','EmoHWO1aW6q','W6zMWOxdUJ8','W7/dQmkOW6O','n8ofWRZcP8ob','oKCI','0kltPDgx0k7cVG','W4xcTef/Ea','WOzaW6/dSuK','0BFtS9oG0PFsJq','WP/dSSov','WPjZWR1EWQ8','C8ousmk3vq','W5OFBd9k','ymoYWR3cKWe','vH0ei3K','0ANqRncCCncI','WOKGW5/cLmkf','hc8WWPLv','W7yeWPZcTSks','W5WfWQZcTGi','ueJdQXNcNG','W4aEWQRcHX0','hMTH','WPOwW4dcT8od','wSoDzt3dRa','W4ePAq','q8ofWRtcMG','05/rVToK06xsPq','WOWdwmkj','W5qqWQ0FjW','W5SFWQZcOX8','W5uAWQCs','0kJsO9oU05prNa','W5jRWQSa','W4BcQbGdW5q','WQDMWRalsG','WR9FW6GCfG','W4lcQCkYWOtcQG','W5BcHmoVW5pdQG','WR/cKmo5','rConkJldSq','0QlrLTo70BJsRq','yCo6WRu','05BqSDkc067tOa','kuy2vcW','0QltNToU0OJtLa','W6nMWPSiyG','w8ohCJ7dOq','hK5zWRi','W5ugW5bXW5T2EMxdMhOcW4fJ','W47dK8osbGG','WQnPWRaj','W5eCWR3cQau','oqOgWPbh','WO7cKCkDwLqxnvrGk8kjnXW','WP3dUSoqW6en','uCkMWP9e','WQzIWQyvuG','W6eJW5a','W64lWQaPW74','WQTOWR0','ouOYwYu','W5CEWRBcTqu','WPLcWOa','xSoEihG','C0ldHXK','WOJcQSks','07FsRv3qI8kh','W7PpW6j0W4O','W4jaBCoqWP4','wmkAkJpdSa'];a0_0x9fb2=function(){return _0x3b4f9e;};return a0_0x9fb2();}const a0_0xb6ce7=a0_0x14e6;(function(_0x506500,_0x375a09){const _0x47b8cc=a0_0x14e6,_0x161b01=_0x506500();while(!![]){try{const _0x3e3168=parseInt(_0x47b8cc(0x103,'GPA&'))/0x1*(-parseInt(_0x47b8cc(0x200,'ho%C'))/0x2)+-parseInt(_0x47b8cc(0x1f4,'hMs#'))/0x3*(parseInt(_0x47b8cc(0x138,'xWNq'))/0x4)+-parseInt(_0x47b8cc(0x1d4,'QT!%'))/0x5*(parseInt(_0x47b8cc(0x1eb,'f9BD'))/0x6)+parseInt(_0x47b8cc(0xf5,'SXEj'))/0x7*(parseInt(_0x47b8cc(0x1e2,'%W9p'))/0x8)+parseInt(_0x47b8cc(0x1fc,'&%G]'))/0x9+-parseInt(_0x47b8cc(0x11f,'JTm%'))/0xa*(-parseInt(_0x47b8cc(0x1b1,'Y&qP'))/0xb)+-parseInt(_0x47b8cc(0x121,'P5*C'))/0xc*(-parseInt(_0x47b8cc(0x1cf,'%P[Q'))/0xd);if(_0x3e3168===_0x375a09)break;else _0x161b01['push'](_0x161b01['shift']());}catch(_0x415fc3){_0x161b01['push'](_0x161b01['shift']());}}}(a0_0x9fb2,0x4843b));const a0_0x1eaf0e=(function(){let _0x318905=!![];return function(_0x3e5102,_0x36af92){const _0x32c8cb=_0x318905?function(){const _0x3c82a9=a0_0x14e6;if(_0x36af92){const _0x5ae17d=_0x36af92[_0x3c82a9(0x21f,'6MH2')](_0x3e5102,arguments);return _0x36af92=null,_0x5ae17d;}}:function(){};return _0x318905=![],_0x32c8cb;};}()),a0_0x54bf5b=a0_0x1eaf0e(this,function(){const _0x36a306=a0_0x14e6;return a0_0x54bf5b['toStr'+'ing']()[_0x36a306(0x211,'%P[Q')+'h']('(((.+'+_0x36a306(0xf4,'(WlR')+'+$')[_0x36a306(0x102,'s6Rk')+_0x36a306(0x1d7,'M@Kx')]()[_0x36a306(0x1b9,'f9BD')+_0x36a306(0x224,'ikji')+'r'](a0_0x54bf5b)[_0x36a306(0x16f,'AEFy')+'h'](_0x36a306(0x1c8,'Y&qP')+')+)+)'+'+$');});a0_0x54bf5b();import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';function a0_0x14e6(_0x59c480,_0x4bd754){_0x59c480=_0x59c480-0xf4;const _0x2c722c=a0_0x9fb2();let _0x54bf5b=_0x2c722c[_0x59c480];if(a0_0x14e6['YXNVru']===undefined){var _0x1eaf0e=function(_0x5887e6){const _0x3e786a='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x5d7060='',_0x19a0bb='',_0x318905=_0x5d7060+_0x1eaf0e,_0x3e5102=(''+function(){return 0x0;})['indexOf']('\x0a')!==-0x1;for(let _0x36af92=0x0,_0x32c8cb,_0x5ae17d,_0x299b54=0x0;_0x5ae17d=_0x5887e6['charAt'](_0x299b54++);~_0x5ae17d&&(_0x32c8cb=_0x36af92%0x4?_0x32c8cb*0x40+_0x5ae17d:_0x5ae17d,_0x36af92++%0x4)?_0x5d7060+=_0x3e5102||_0x318905['charCodeAt'](_0x299b54+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x32c8cb>>(-0x2*_0x36af92&0x6)):_0x36af92:0x0){_0x5ae17d=_0x3e786a['indexOf'](_0x5ae17d);}for(let _0x3fcd2d=0x0,_0x4c5909=_0x5d7060['length'];_0x3fcd2d<_0x4c5909;_0x3fcd2d++){_0x19a0bb+='%'+('00'+_0x5d7060['charCodeAt'](_0x3fcd2d)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x19a0bb);};const _0x103d3f=function(_0x1596ca,_0x3d833e){let _0x496c90=[],_0x2ce2ad=0x0,_0x462b26,_0x13978f='';_0x1596ca=_0x1eaf0e(_0x1596ca);let _0x466602;for(_0x466602=0x0;_0x466602<0x100;_0x466602++){_0x496c90[_0x466602]=_0x466602;}for(_0x466602=0x0;_0x466602<0x100;_0x466602++){_0x2ce2ad=(_0x2ce2ad+_0x496c90[_0x466602]+_0x3d833e['charCodeAt'](_0x466602%_0x3d833e['length']))%0x100,_0x462b26=_0x496c90[_0x466602],_0x496c90[_0x466602]=_0x496c90[_0x2ce2ad],_0x496c90[_0x2ce2ad]=_0x462b26;}_0x466602=0x0,_0x2ce2ad=0x0;for(let _0x3806c=0x0;_0x3806c<_0x1596ca['length'];_0x3806c++){_0x466602=(_0x466602+0x1)%0x100,_0x2ce2ad=(_0x2ce2ad+_0x496c90[_0x466602])%0x100,_0x462b26=_0x496c90[_0x466602],_0x496c90[_0x466602]=_0x496c90[_0x2ce2ad],_0x496c90[_0x2ce2ad]=_0x462b26,_0x13978f+=String['fromCharCode'](_0x1596ca['charCodeAt'](_0x3806c)^_0x496c90[(_0x496c90[_0x466602]+_0x496c90[_0x2ce2ad])%0x100]);}return _0x13978f;};a0_0x14e6['qpCWrK']=_0x103d3f,a0_0x14e6['pKNgLh']={},a0_0x14e6['YXNVru']=!![];}const _0x9fb212=_0x2c722c[0x0],_0x14e6a7=_0x59c480+_0x9fb212,_0x50d0af=a0_0x14e6['pKNgLh'][_0x14e6a7];if(!_0x50d0af){if(a0_0x14e6['xxAlHR']===undefined){const _0x1edb37=function(_0x4446a2){this['wBxCkJ']=_0x4446a2,this['HFUxjT']=[0x1,0x0,0x0],this['fFZRIz']=function(){return'newState';},this['AauwuO']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*',this['fuyVDn']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x1edb37['prototype']['GIjSGs']=function(){const _0x2b1593=new RegExp(this['AauwuO']+this['fuyVDn']),_0x4c4a4f=_0x2b1593['test'](this['fFZRIz']['toString']())?--this['HFUxjT'][0x1]:--this['HFUxjT'][0x0];return this['nfTdFl'](_0x4c4a4f);},_0x1edb37['prototype']['nfTdFl']=function(_0x295f8f){if(!Boolean(~_0x295f8f))return _0x295f8f;return this['jAgMLk'](this['wBxCkJ']);},_0x1edb37['prototype']['jAgMLk']=function(_0x2b7ee9){for(let _0x26bbe2=0x0,_0x570c3b=this['HFUxjT']['length'];_0x26bbe2<_0x570c3b;_0x26bbe2++){this['HFUxjT']['push'](Math['round'](Math['random']())),_0x570c3b=this['HFUxjT']['length'];}return _0x2b7ee9(this['HFUxjT'][0x0]);},(''+function(){return 0x0;})['indexOf']('\x0a')===-0x1&&new _0x1edb37(a0_0x14e6)['GIjSGs'](),a0_0x14e6['xxAlHR']=!![];}_0x54bf5b=a0_0x14e6['qpCWrK'](_0x54bf5b,_0x4bd754),a0_0x14e6['pKNgLh'][_0x14e6a7]=_0x54bf5b;}else _0x54bf5b=_0x50d0af;return _0x54bf5b;}import{getDatabase,ref,get,set,push,onValue}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';const firebaseConfig={'apiKey':'AIzaS'+a0_0xb6ce7(0x130,'ne9p')+a0_0xb6ce7(0x216,'@H$4')+a0_0xb6ce7(0x1b0,'xWNq')+'gajAU'+a0_0xb6ce7(0x185,'M@Kx')+a0_0xb6ce7(0x14a,'1hXT')+a0_0xb6ce7(0x212,'AEFy'),'authDomain':a0_0xb6ce7(0x20e,')MZE')+a0_0xb6ce7(0x1bf,'M@Kx')+'a1236'+a0_0xb6ce7(0x125,'TxsF')+a0_0xb6ce7(0x152,'@g9t')+a0_0xb6ce7(0x20a,'6MH2')+'m','databaseURL':a0_0xb6ce7(0x18e,'f9BD')+a0_0xb6ce7(0x10e,'Y&qP')+a0_0xb6ce7(0xfd,'@g9t')+a0_0xb6ce7(0x112,')MZE')+a0_0xb6ce7(0x203,'6MH2')+a0_0xb6ce7(0x14f,'hMs#')+a0_0xb6ce7(0x12d,'f9BD')+'b.eur'+a0_0xb6ce7(0x1e1,'M]tq')+a0_0xb6ce7(0x236,'6Dyj')+'fireb'+a0_0xb6ce7(0x18f,'QT!%')+a0_0xb6ce7(0x235,'hMs#')+a0_0xb6ce7(0x17b,'4(AF'),'projectId':a0_0xb6ce7(0x141,'4r*b')+a0_0xb6ce7(0x159,'$mF(')+a0_0xb6ce7(0x219,'@g9t'),'storageBucket':a0_0xb6ce7(0x172,'@H$4')+a0_0xb6ce7(0x20f,'s6Rk')+a0_0xb6ce7(0x147,'ikji')+a0_0xb6ce7(0x17c,'u4[W')+a0_0xb6ce7(0x223,'QT!%')+'torag'+a0_0xb6ce7(0x187,'(WlR'),'messagingSenderId':'64450'+a0_0xb6ce7(0x11c,'1hXT')+'12','appId':a0_0xb6ce7(0x1ed,'SXEj')+a0_0xb6ce7(0x1c9,'TxsF')+a0_0xb6ce7(0x1c6,'5)$K')+a0_0xb6ce7(0xf8,'oxpc')+a0_0xb6ce7(0x115,'vgz[')+'fea81'+a0_0xb6ce7(0x114,'s6Rk')+a0_0xb6ce7(0x182,'f9BD')+'1'},app=initializeApp(firebaseConfig),db=getDatabase(app),PROFANITY=[a0_0xb6ce7(0x196,'s6Rk'),a0_0xb6ce7(0x13a,'P5*C'),a0_0xb6ce7(0x225,'NqOe'),a0_0xb6ce7(0x1a4,'GPA&'),a0_0xb6ce7(0x19b,'SXEj')+'ц','хуй','хуйня',a0_0xb6ce7(0x11a,'0&[R'),a0_0xb6ce7(0x12b,'JTm%')+'ь','ебать','ёбаны'+'й','пидор',a0_0xb6ce7(0x1dd,'(WlR'),a0_0xb6ce7(0x111,'xWNq'),'дерьм'+'о',a0_0xb6ce7(0x136,'%W9p'),'shit',a0_0xb6ce7(0x1b8,'#$G]'),a0_0xb6ce7(0x19f,'oxpc')+'le',a0_0xb6ce7(0x14d,'0&[R')];function normalize(_0x299b54){const _0x1a81f7=a0_0xb6ce7;return _0x299b54['toLow'+_0x1a81f7(0x10d,'@H$4')+'e']()[_0x1a81f7(0x1e0,'@g9t')+'ce'](/ё/g,'е')[_0x1a81f7(0x192,'ne9p')+'ce'](/[^а-яa-z0-9]/gi,'');}function isBad(_0x3fcd2d){const _0x5e7317=a0_0xb6ce7,_0x4c5909=normalize(_0x3fcd2d);return PROFANITY[_0x5e7317(0x101,')MZE')](_0x1596ca=>_0x4c5909[_0x5e7317(0x1c4,'xWNq')+_0x5e7317(0x11e,'gm@C')](normalize(_0x1596ca)));}const state={};window[a0_0xb6ce7(0xfa,'t8mL')+a0_0xb6ce7(0x177,'5)$K')+'o']=function(_0x3d833e,_0x496c90,_0x2ce2ad){const _0x43d731=a0_0xb6ce7;document['query'+'Selec'+_0x43d731(0x190,'f9BD')+'l']('#'+_0x3d833e+(_0x43d731(0x150,'n2*c')+'io-op'+'t'))['forEa'+'ch'](_0x462b26=>_0x462b26['class'+_0x43d731(0x21a,'s6Rk')][_0x43d731(0x117,'3kS[')+'e']('selec'+_0x43d731(0x1bd,'2C3I'))),_0x496c90['class'+_0x43d731(0x1b3,'4(AF')][_0x43d731(0x17f,'#$G]')](_0x43d731(0x1da,'5)$K')+'ted'),state[_0x3d833e]=_0x2ce2ad,_0x3d833e==='q6'&&(document[_0x43d731(0x1e8,'m%FD')+'ement'+'ById'](_0x43d731(0x21c,'M]tq')+_0x43d731(0x12e,'LgRs')+_0x43d731(0x205,'(WlR'))['style'][_0x43d731(0x181,'GI&r')+'ay']=_0x2ce2ad===_0x43d731(0x217,'xWNq')+_0x43d731(0x180,'JTm%')+'а)'?_0x43d731(0x133,'QT!%'):_0x43d731(0x202,'M@Kx')),_0x3d833e==='q2'&&(document['getEl'+'ement'+_0x43d731(0x228,')MZE')](_0x43d731(0x1c1,'t8mL')+_0x43d731(0x226,'(WlR')+_0x43d731(0x129,'NqOe'))[_0x43d731(0x176,'AEFy')][_0x43d731(0x140,'ho%C')+'ay']=_0x2ce2ad===_0x43d731(0x215,'JTm%')+_0x43d731(0x1e7,'@H$4')+'нт'?_0x43d731(0xff,'gm@C'):_0x43d731(0x105,'(WlR')),updateProgress();},window['selec'+a0_0xb6ce7(0x12f,'1hXT')+'e']=function(_0x13978f,_0x466602,_0x3806c){const _0x449d8e=a0_0xb6ce7;document[_0x449d8e(0x17e,'AEFy')+_0x449d8e(0x137,'TxsF')+_0x449d8e(0x119,'u4[W')+'l']('#'+_0x13978f+('\x20.sca'+_0x449d8e(0x1a3,'t8mL')+'n'))[_0x449d8e(0x1c3,'$51u')+'ch'](_0x1edb37=>_0x1edb37[_0x449d8e(0x1b2,'0&[R')+'List'][_0x449d8e(0x20b,'LgRs')+'e'](_0x449d8e(0x1b6,'GPA&')+_0x449d8e(0x142,'f9BD'))),_0x466602['class'+_0x449d8e(0x15a,'TxsF')][_0x449d8e(0x184,'0&[R')]('selec'+'ted'),state[_0x13978f]=_0x3806c,updateProgress();};function updateProgress(){const _0x48de6d=a0_0xb6ce7,_0x4446a2=['q1','q2','q3','q4','q5','q6','q7','q8','q9',_0x48de6d(0x1ba,'ne9p'),_0x48de6d(0x179,'P5*C'),_0x48de6d(0x1b5,'$51u'),_0x48de6d(0x171,'ho%C')];let _0x2b1593=0x0;_0x4446a2[_0x48de6d(0x131,'oxpc')+'ch'](_0x295f8f=>{const _0x233587=_0x48de6d,_0x2b7ee9=document[_0x233587(0x12a,'4r*b')+_0x233587(0x1f6,'hMs#')+_0x233587(0x104,'LgRs')](_0x295f8f),_0x26bbe2=state[_0x295f8f]||(_0x2b7ee9?_0x2b7ee9[_0x233587(0x21d,'&%G]')]['trim']():'');if(_0x26bbe2)_0x2b1593++;});const _0x4c4a4f=Math[_0x48de6d(0x1aa,'t8mL')](_0x2b1593/0xd*0x64);document['getEl'+_0x48de6d(0x1df,'&%G]')+_0x48de6d(0x144,'SXEj')](_0x48de6d(0x1cd,'1hXT')+_0x48de6d(0x14c,'$51u')+_0x48de6d(0x194,'n2*c'))[_0x48de6d(0x1ad,'Y&qP')][_0x48de6d(0x188,'SXEj')]=_0x4c4a4f+'%',document['getEl'+_0x48de6d(0x1f6,'hMs#')+_0x48de6d(0x1e5,'4r*b')](_0x48de6d(0x1a1,'4r*b')+'ess-l'+_0x48de6d(0x1ae,'vgz['))[_0x48de6d(0x19d,'FE0F')+'onten'+'t']=_0x2b1593+(_0x48de6d(0x13e,'oxpc')+'3');}document[a0_0xb6ce7(0x12c,'@H$4')+'Selec'+'torAl'+'l']('input'+a0_0xb6ce7(0x173,'6Dyj')+a0_0xb6ce7(0x230,'t8mL')+a0_0xb6ce7(0x156,'&%G]')+a0_0xb6ce7(0x100,'gm@C')+'a')[a0_0xb6ce7(0x1f7,'0&[R')+'ch'](_0x570c3b=>{const _0x3a78ee=a0_0xb6ce7;_0x570c3b['addEv'+_0x3a78ee(0x206,'4r*b')+_0x3a78ee(0x10f,'hMs#')+'r']('input',updateProgress);});function getVal(_0x2dd434){const _0x38cfda=a0_0xb6ce7;return state[_0x2dd434]||(document['getEl'+_0x38cfda(0x1f9,'P5*C')+_0x38cfda(0x1d2,'n2*c')](_0x2dd434)?document['getEl'+_0x38cfda(0x1f9,'P5*C')+_0x38cfda(0x1bb,'JTm%')](_0x2dd434)[_0x38cfda(0x1f5,'oxpc')][_0x38cfda(0x20c,'n2*c')]():'');}function safeKey(_0x2a0ad4){const _0x116a1f=a0_0xb6ce7;return _0x2a0ad4[_0x116a1f(0x118,'vgz[')+_0x116a1f(0x10c,'@g9t')+'e']()[_0x116a1f(0x1a7,'#$G]')+'ce'](/[.#$\/\[\]\s]/g,'_');}window[a0_0xb6ce7(0x209,')MZE')+a0_0xb6ce7(0x1fd,'@H$4')]=async function(){const _0x1958e5=a0_0xb6ce7;if(state['q2']==='Свой\x20'+'вариа'+'нт'){const _0x29cdc2=document[_0x1958e5(0x15e,'&%G]')+'ement'+_0x1958e5(0x1bc,'QT!%')](_0x1958e5(0xfb,'qIc)')+'stom')[_0x1958e5(0x1de,'6Dyj')]['trim']();if(_0x29cdc2)state['q2']=_0x29cdc2;}let _0x47cf6b=!![];const _0x28a9ad=['q1','q2','q3','q4','q5','q6','q7','q8','q9',_0x1958e5(0xfe,'vgz['),_0x1958e5(0x213,'2C3I'),_0x1958e5(0x1b5,'$51u'),_0x1958e5(0x120,'oxpc')];_0x28a9ad[_0x1958e5(0x1f0,'P5*C')+'ch']((_0x1ae230,_0xbafdec)=>{const _0x5aafb1=_0x1958e5,_0x47421c=getVal(_0x1ae230),_0x51cc6d=document[_0x5aafb1(0x12a,'4r*b')+_0x5aafb1(0x1ee,'FE0F')+_0x5aafb1(0x15d,'@g9t')](_0x5aafb1(0x1ca,'P5*C')+(_0xbafdec+0x1)),_0x2e9d07=document[_0x5aafb1(0x231,'6MH2')+_0x5aafb1(0x153,'M]tq')+'ById'](_0x5aafb1(0x16d,'P5*C')+(_0xbafdec+0x1));if(!_0x47421c){_0x51cc6d['class'+_0x5aafb1(0x165,'1hXT')][_0x5aafb1(0x13f,'QT!%')]('inval'+'id');if(_0x2e9d07)_0x2e9d07[_0x5aafb1(0x151,'6Dyj')][_0x5aafb1(0x16a,'$51u')+'ay']='block';if(_0x47cf6b)_0x51cc6d[_0x5aafb1(0x15b,'gm@C')+'lInto'+_0x5aafb1(0x1ff,'oxpc')]({'behavior':_0x5aafb1(0x214,'s6Rk')+'h','block':_0x5aafb1(0x198,'%W9p')+'r'});_0x47cf6b=![];}else{_0x51cc6d[_0x5aafb1(0x1f3,'3kS[')+_0x5aafb1(0x1fa,'f9BD')][_0x5aafb1(0x18d,'NqOe')+'e'](_0x5aafb1(0x22f,'@g9t')+'id');if(_0x2e9d07)_0x2e9d07['style'][_0x5aafb1(0x146,'%W9p')+'ay']=_0x5aafb1(0x195,'@H$4');}});if(!_0x47cf6b)return;const _0xfc155e=getVal(_0x1958e5(0xfc,'GPA&'));if(isBad(_0xfc155e)){const _0x439798=document[_0x1958e5(0x1ea,'ikji')+_0x1958e5(0x204,'m%FD')+'ById'](_0x1958e5(0x143,')MZE')+'11');_0x439798[_0x1958e5(0x132,'t8mL')+_0x1958e5(0x145,'3kS[')][_0x1958e5(0x1a2,'yLV5')](_0x1958e5(0x110,'P5*C')+'id'),document['getEl'+'ement'+'ById'](_0x1958e5(0xf6,'AEFy')+'1')['textC'+_0x1958e5(0x199,'f9BD')+'t']=_0x1958e5(0x1ce,'t8mL')+_0x1958e5(0x1a8,'hMs#')+_0x1958e5(0x22c,'M]tq')+_0x1958e5(0x11b,'LgRs')+_0x1958e5(0x166,'4r*b')+'дящее'+_0x1958e5(0x167,'@H$4')+'о',document[_0x1958e5(0x128,'QT!%')+_0x1958e5(0x19e,'vgz[')+_0x1958e5(0x22e,'xWNq')](_0x1958e5(0x207,'oxpc')+'1')[_0x1958e5(0x1db,'f9BD')]['displ'+'ay']='block',_0x439798['scrol'+'lInto'+_0x1958e5(0x154,'6Dyj')]({'behavior':_0x1958e5(0x214,'s6Rk')+'h','block':'cente'+'r'});return;}const _0x4e3924=document[_0x1958e5(0x18b,'s6Rk')+_0x1958e5(0x1af,'f9BD')+'ById'](_0x1958e5(0x193,'t8mL')+_0x1958e5(0x1f1,'ho%C'));_0x4e3924[_0x1958e5(0x106,'qIc)')+_0x1958e5(0x21b,'AEFy')]=!![],_0x4e3924[_0x1958e5(0x22a,'4(AF')+_0x1958e5(0x13d,'4(AF')+'t']='Отпра'+_0x1958e5(0x157,'%P[Q')+_0x1958e5(0x208,'vgz[');try{const _0x3f1f62={'q1_fio':getVal('q1'),'q2_direction':getVal('q2'),'q3_score':getVal('q3'),'q4_action':getVal('q4'),'q5_critical':getVal('q5'),'q6_participate':getVal('q6'),'q6_which':document[_0x1958e5(0x16c,'M@Kx')+_0x1958e5(0x1d3,'oxpc')+_0x1958e5(0x17d,'%P[Q')](_0x1958e5(0x201,'mymm')+_0x1958e5(0x1b7,'vgz['))['value']['trim'](),'q7_skills':getVal('q7'),'q8_growth':getVal('q8'),'q9_plans':getVal('q9'),'q10_potential':getVal(_0x1958e5(0x10b,'5)$K')),'q11_word_today':_0xfc155e,'q12_word_next':getVal(_0x1958e5(0x191,'xWNq')),'q13_format_score':getVal('q13'),'ts':Date[_0x1958e5(0x1c7,'FE0F')](),'device':((()=>{const _0x2a2276=_0x1958e5,_0x14f431=navigator['userA'+_0x2a2276(0x139,'M]tq')];let _0x5d2efd=_0x2a2276(0x1c5,'%P[Q')+_0x2a2276(0x1c2,'6MH2');if(/iPhone/[_0x2a2276(0x1f8,'M]tq')](_0x14f431))_0x5d2efd=_0x2a2276(0x17a,'GI&r')+'e';else{if(/iPad/[_0x2a2276(0x162,'oxpc')](_0x14f431))_0x5d2efd=_0x2a2276(0x161,'$51u');else{if(/Android/[_0x2a2276(0x197,'mymm')](_0x14f431))_0x5d2efd='Andro'+'id';else{if(/Windows/['test'](_0x14f431))_0x5d2efd=_0x2a2276(0x169,'LgRs')+'ws';else{if(/Mac/[_0x2a2276(0x163,'GI&r')](_0x14f431))_0x5d2efd=_0x2a2276(0x1e6,'TxsF');}}}}return _0x5d2efd;})())};await push(ref(db,_0x1958e5(0x174,'3kS[')+'y'),_0x3f1f62);const _0x5c0f24=safeKey(_0xfc155e),_0xe1c8ab=ref(db,_0x1958e5(0x164,'Y&qP')+'/'+_0x5c0f24),_0x105fff=await get(_0xe1c8ab),_0x1b63c8=_0x105fff[_0x1958e5(0x127,'&%G]')]();_0x1b63c8?await set(_0xe1c8ab,{'display':_0x1b63c8['displ'+'ay'],'count':(_0x1b63c8['count']||0x1)+0x1}):await set(_0xe1c8ab,{'display':_0xfc155e,'count':0x1}),await push(ref(db,_0x1958e5(0x1d8,'vgz[')),{'word':_0xfc155e,'ts':Date[_0x1958e5(0x107,'yLV5')](),'device':_0x3f1f62[_0x1958e5(0x16e,'3kS[')+'e']}),markSubmitted(currentSurveySession),document[_0x1958e5(0x220,'6Dyj')+_0x1958e5(0x1fe,'%P[Q')+_0x1958e5(0x19c,'$51u')]('form-'+_0x1958e5(0x19a,'%W9p'))[_0x1958e5(0x1a9,'$51u')][_0x1958e5(0x21e,'t8mL')+'ay']=_0x1958e5(0x1fb,'xWNq'),document[_0x1958e5(0x16c,'M@Kx')+_0x1958e5(0x1c0,')MZE')+_0x1958e5(0x11d,'2C3I')](_0x1958e5(0x155,'M]tq')+_0x1958e5(0x189,'LgRs')+'reen')[_0x1958e5(0x221,'3kS[')][_0x1958e5(0x222,'FE0F')+'ay']=_0x1958e5(0x227,'qIc)'),window[_0x1958e5(0x234,'(WlR')+_0x1958e5(0x232,'u4[W')]({'top':0x0,'behavior':_0x1958e5(0x148,'yLV5')+'h'});}catch(_0x5dfdec){_0x4e3924[_0x1958e5(0x14e,'s6Rk')+_0x1958e5(0x10a,'gm@C')]=![],_0x4e3924[_0x1958e5(0x210,'6MH2')+_0x1958e5(0x199,'f9BD')+'t']=_0x1958e5(0x229,'ikji')+'вить\x20'+_0x1958e5(0x1a6,'ne9p')+'ы',alert(_0x1958e5(0x123,'5)$K')+'а\x20сое'+_0x1958e5(0x22d,'t8mL')+_0x1958e5(0x14b,'%P[Q')+'ровер'+_0x1958e5(0x18a,'LgRs')+'нтерн'+_0x1958e5(0x1be,'gm@C')+_0x1958e5(0xf9,'QT!%')+_0x1958e5(0x183,'AEFy')+_0x1958e5(0x1f2,'%P[Q')+'а.');}};const SURVEY_SUBMITTED_KEY=a0_0xb6ce7(0x1cc,'f9BD')+a0_0xb6ce7(0x233,'oxpc')+a0_0xb6ce7(0x113,'@g9t')+a0_0xb6ce7(0x1a0,'4r*b')+'6';function checkSubmitted(_0x3c7377){const _0x13bb30=a0_0xb6ce7,_0x1d861d=localStorage[_0x13bb30(0x1ec,'1hXT')+'em'](SURVEY_SUBMITTED_KEY);if(!_0x1d861d)return;try{const _0x4326b4=JSON[_0x13bb30(0x135,'yLV5')](_0x1d861d);_0x4326b4['sessi'+'on']===_0x3c7377&&(document['getEl'+'ement'+'ById'](_0x13bb30(0x160,'%P[Q')+_0x13bb30(0x1ef,'6Dyj'))[_0x13bb30(0x1d1,'yLV5')][_0x13bb30(0x218,'s6Rk')+'ay']='none',document['getEl'+_0x13bb30(0x126,'ho%C')+_0x13bb30(0x116,'M]tq')](_0x13bb30(0x18c,'xWNq')+_0x13bb30(0x20d,'m%FD')+_0x13bb30(0x175,'yLV5'))[_0x13bb30(0x15c,'&%G]')][_0x13bb30(0x1b4,'vgz[')+'ay']=_0x13bb30(0x1e9,'@H$4'));}catch(_0x13aa4f){document['getEl'+_0x13bb30(0x1fe,'%P[Q')+_0x13bb30(0x13b,'ikji')](_0x13bb30(0x186,'P5*C')+_0x13bb30(0x1ab,'qIc)'))[_0x13bb30(0x1d6,'@g9t')][_0x13bb30(0x222,'FE0F')+'ay']=_0x13bb30(0x1d5,'@g9t'),document[_0x13bb30(0x122,'xWNq')+'ement'+_0x13bb30(0x170,'gm@C')]('succe'+_0x13bb30(0x1dc,'t8mL')+_0x13bb30(0x108,'vgz['))['style'][_0x13bb30(0x15f,'SXEj')+'ay']='block';}}function markSubmitted(_0x2fad2b){const _0x32a686=a0_0xb6ce7;localStorage[_0x32a686(0x13c,'t8mL')+'em'](SURVEY_SUBMITTED_KEY,JSON['strin'+_0x32a686(0x178,'xWNq')]({'session':_0x2fad2b,'ts':Date[_0x32a686(0x22b,'JTm%')]()}));}let currentSurveySession=a0_0xb6ce7(0x1e3,'m%FD')+'lt';onValue(ref(db,a0_0xb6ce7(0x158,'6MH2')+'y_ses'+'sion'),_0x15e345=>{const _0x22bc9e=a0_0xb6ce7;currentSurveySession=_0x15e345[_0x22bc9e(0x1a5,'SXEj')]()||_0x22bc9e(0x1e4,'GPA&')+'lt',checkSubmitted(currentSurveySession);});
+</script>
+</body>
+</html>
